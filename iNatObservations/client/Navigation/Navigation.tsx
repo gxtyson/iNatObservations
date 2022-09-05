@@ -3,23 +3,41 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
+import DummyHome from "../Components/DummyComponent";
+import Observations from '../Components/Observations'
+
 const Tab = createBottomTabNavigator()
+const HomeStack = createNativeStackNavigator()
 
-function BottomTabNav() {
+const Home = () => {
   return (
-    <Tab.Navigator>
+    <HomeStack.Navigator screenOptions={{headerShown: false}}>
+      <HomeStack.Screen name='DummyHome' component={DummyHome}/>
 
-      {/* need to figure out how mant bottom tabs */}
-      {/* <Tab.Screen name='' component={} />
-      <Tab.Screen name='' component={} /> */}
-    </Tab.Navigator>
+    </HomeStack.Navigator>
   )
 }
 
-export default function NavigationCon() {
+
+export default function BottomTabNav() {
   return (
     <NavigationContainer>
-
+    <Tab.Navigator >
+      {/* need to figure out how mant bottom tabs */}
+      <Tab.Screen name='Home' component={Home} />
+      <Tab.Screen name='New Obs' component={Observations} />
+      <Tab.Screen name='Profile' component={DummyHome} />
+    </Tab.Navigator>
     </NavigationContainer>
   )
 }
+
+
+// this function will be for authenication if needed for api
+// export default function NavigationCon() {
+//   return (
+//     <NavigationContainer>
+
+//     </NavigationContainer>
+//   )
+// }
