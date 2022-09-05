@@ -29,7 +29,6 @@ function Observation() {
     fetchObservationTaxonName()
   }, [])
 
-  console.log('fetched', taxonName)
 
 
   return (
