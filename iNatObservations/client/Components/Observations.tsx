@@ -1,46 +1,49 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {StyleSheet, TouchableOpacity, View, Text } from 'react-native';
 
 
+// import { fetchObservationTaxonName } from '../Helpers/api';
+
+
 function Observation() {
+  const [taxonName, setTaxonName] = useState(null)
+
+  const fetchObservationTaxonName = async () => {
+    try {
+      const { data } = await axios.get(
+        "https://api.inaturalist.org/v1/observations"
+      );
+      const resultArray = data.results;
+      const taxon = resultArray.map((x) => x.taxon).filter(Boolean);
+      const taxonName = taxon.map((y) => y.name).filter(Boolean);
+
+      setTaxonName(taxonName);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+
+  useEffect(() => {
+    fetchObservationTaxonName()
+  }, [])
+
+  console.log('fetched', taxonName)
+
+
   return (
     <View>
       <TouchableOpacity
       style={styles.buttonStyle}
-      onPress={GetData}
       >
-        <Text>Get Data Using Async Await GET</Text>
+        <Text>{taxonName}</Text>
       </TouchableOpacity>
     </View>
   )
 }
 
-const GetData = () => {
-  axios
-    .get('https://api.inaturalist.org/v1/observations')
-    .then(function (response) {
-      // handle success
-      // alert(JSON.stringify(response.data));
 
-      const resultArray = response.data.results
-      const taxon = resultArray.map((x) => x.taxon)
-      const filteredTaxon = taxon.filter(Boolean)
-      const taxonName = filteredTaxon.map((y) => y.name)
-      const filteredTaxonName = taxonName.filter(Boolean)
-      console.log('taxon here', filteredTaxonName)
-
-      // console.log('taxon here', taxon.map((y) => y.name ))
-    })
-    // .catch(function (error) {
-    //   // handle error
-    //   alert(error.message);
-    // })
-    // .finally(function () {
-    //   // always executed
-    //   alert('Finally called');
-    // });
-};
  export default Observation
 
  const styles = StyleSheet.create({

@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -20,12 +21,15 @@ const Home = () => {
 
 
 export default function BottomTabNav() {
+  const [showObservations, setShowObservations] = useState<boolean>(false);
+
   return (
     <NavigationContainer>
     <Tab.Navigator >
       {/* need to figure out how mant bottom tabs */}
       <Tab.Screen name='Home' component={Home} />
-      <Tab.Screen name='New Obs' component={Observations} />
+      <Tab.Screen name='Browse' component={Home} />
+      <Tab.Screen name='Observe' component={Observations} />
       <Tab.Screen name='Profile' component={DummyHome} />
     </Tab.Navigator>
     </NavigationContainer>
