@@ -1,19 +1,20 @@
-// import axios from "axios";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-// export const fetchObservationTaxonName = async () => {
-//   try {
-//     const { data } = await axios.get(
-//       "https://api.inaturalist.org/v1/observations"
-//     );
-//     const resultArray = data.results;
-//     const taxon = resultArray.map((x) => x.taxon);
-//     const filteredTaxon = taxon.filter(Boolean);
-//     const taxonName = filteredTaxon.map((y) => y.name);
-//     const filteredTaxonName = taxonName.filter(Boolean);
-//     console.log(filteredTaxonName);
+const HelperFunc = () => {
+  const [resultData, setResultData] = useState([]);
+  const fetchObservationResults = async () => {
+    const { data } = await axios.get(
+      "https://api.inaturalist.org/v1/observations"
+    );
+    setResultData(data.results);
+  };
 
-//     return filteredTaxonName;
-//   } catch (error) {
-//     console.error(error);
-//   }
-// };
+  useEffect(() => {
+    fetchObservationResults();
+  }, []);
+
+  return resultData;
+};
+
+export default HelperFunc;

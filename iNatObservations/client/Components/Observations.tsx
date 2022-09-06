@@ -4,55 +4,58 @@ import {StyleSheet, TouchableOpacity, View,  ScrollView, Text } from 'react-nati
 
 import ResultComponent from './ResultComponent';
 import CategoryFilter from './CategoryFilter';
-
-const Feed: React.FC = () => {
-  const [taxon, setTaxon] = useState([])
-  const [data, setData] = useState([])
+// import { fetchObservationResults } from '../Helpers/api';
+import HelperFunc from '../Helpers/api';
 
 
-  const fetchObservationResults = async() => {
-    const { data } = await axios.get("https://api.inaturalist.org/v1/observations")
-    // setTaxon(data.results.map((x) => x.taxon).filter(Boolean))
-    // setData(data.results.map((y) => y.photos).filter(Boolean))
-    setData(data.results)
-  }
-  useEffect(() => {
-    fetchObservationResults()
-  }, [])
+const Feed = () => {
+  // const [data, setData] = useState([])
 
-  console.log('what is this data?', data)
 
+  // const fetchObservationResults = async() => {
+  //   const { data } = await axios.get("https://api.inaturalist.org/v1/observations")
+  //   setData(data.results)
+  // }
+  // useEffect(() => {
+  //   fetchObservationResults()
+  // }, [])
+  // console.log('what is this data?', data)
+
+
+
+  const allData = HelperFunc()
+  console.log('all data here', allData)
 
   const observationCard = () => {
     return (
       <View>
-        {data.map((singleItem) => (
+        {allData.map((singleItem) => (
           <ResultComponent props={singleItem} />
         ))}
       </View>
     )
   }
   // console.log('whats the taxon?', taxon.map((z) => z.iconic_taxon_name))
-  const iconicArray = taxon.map((z) => z.iconic_taxon_name)
-  const noRepeats = [...new Set(iconicArray)]
+  // const iconicArray = taxon.map((z) => z.iconic_taxon_name)
+  // const noRepeats = [...new Set(iconicArray)]
 
   // console.log('no repeats', noRepeats)
 
 
-  const taxonCategory = () => {
-    return (
-      <View>
-        {noRepeats.map((single) => (
-          <CategoryFilter props={single} />
-        ))}
-      </View>
-    )
-  }
+  // const taxonCategory = () => {
+  //   return (
+  //     <View>
+  //       {noRepeats.map((single) => (
+  //         <CategoryFilter props={single} />
+  //       ))}
+  //     </View>
+  //   )
+  // }
 
   return (
     <View>
-      <Text>FILTER HERE</Text>
-      <View>{taxonCategory()}</View>
+      {/* <Text>FILTER HERE</Text>
+      <View>{taxonCategory()}</View> */}
       <ScrollView>{observationCard()}</ScrollView>
     </View>
   )
