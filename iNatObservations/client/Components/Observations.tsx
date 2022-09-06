@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import {StyleSheet, TouchableOpacity, View, Text, Image } from 'react-native';
+import {StyleSheet, TouchableOpacity, View,  ScrollView } from 'react-native';
 
 import ResultComponent from './ResultComponent';
 
@@ -15,6 +15,7 @@ const Feed: React.FC = () => {
   useEffect(() => {
     fetchObservationResults()
   }, [])
+
   const observationCard = () => {
     return (
       <View>
@@ -26,7 +27,7 @@ const Feed: React.FC = () => {
   }
 
   return (
-    <View>{observationCard()}</View>
+    <ScrollView>{observationCard()}</ScrollView>
   )
 
 
