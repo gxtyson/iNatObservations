@@ -2,9 +2,8 @@ import React from "react";
 import {StyleSheet, View, Text, Image, TouchableOpacity} from 'react-native'
 
 
-export default function ResultComponent({ props }) {
+export default function ObservationHomeCard({ props }) {
 
-console.log('what are props here', props)
 
   return (
     <View>

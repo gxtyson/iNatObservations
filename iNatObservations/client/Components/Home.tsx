@@ -1,36 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import {StyleSheet, TouchableOpacity, View,  ScrollView, Text } from 'react-native';
+import React from 'react';
+import { StyleSheet, View,  ScrollView } from 'react-native';
 
-import ResultComponent from './ResultComponent';
-import CategoryFilter from './CategoryFilter';
-// import { fetchObservationResults } from '../Helpers/api';
+import ObservationHomeCard from './ObservationHomeCard';
 import HelperFunc from '../Helpers/api';
 
 
-const Feed = () => {
-  // const [data, setData] = useState([])
-
-
-  // const fetchObservationResults = async() => {
-  //   const { data } = await axios.get("https://api.inaturalist.org/v1/observations")
-  //   setData(data.results)
-  // }
-  // useEffect(() => {
-  //   fetchObservationResults()
-  // }, [])
-  // console.log('what is this data?', data)
-
-
-
+const Home = () => {
   const allData = HelperFunc()
-  console.log('all data here', allData)
 
-  const observationCard = () => {
+  const renderObservationCard = () => {
     return (
       <View>
         {allData.map((singleItem) => (
-          <ResultComponent props={singleItem} />
+          <ObservationHomeCard props={singleItem} />
         ))}
       </View>
     )
@@ -54,9 +36,7 @@ const Feed = () => {
 
   return (
     <View>
-      {/* <Text>FILTER HERE</Text>
-      <View>{taxonCategory()}</View> */}
-      <ScrollView>{observationCard()}</ScrollView>
+      <ScrollView>{renderObservationCard()}</ScrollView>
     </View>
   )
 
@@ -64,7 +44,7 @@ const Feed = () => {
 }
 
 
- export default Feed
+ export default Home
 
  const styles = StyleSheet.create({
   container: {
