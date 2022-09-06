@@ -7,35 +7,43 @@ import CategoryFilter from './CategoryFilter';
 
 const Feed: React.FC = () => {
   const [taxon, setTaxon] = useState([])
-  const [iconicTaxonName, setIconicTaxonName] = useState([])
+  const [data, setData] = useState([])
 
 
   const fetchObservationResults = async() => {
     const { data } = await axios.get("https://api.inaturalist.org/v1/observations")
-    setTaxon(data.results.map((x) => x.taxon).filter(Boolean))
+    // setTaxon(data.results.map((x) => x.taxon).filter(Boolean))
+    // setData(data.results.map((y) => y.photos).filter(Boolean))
+    setData(data.results)
   }
   useEffect(() => {
     fetchObservationResults()
   }, [])
 
-  // console.log('what is the iconic taxon here?', iconicTaxonName)
+  console.log('what is this data?', data)
 
 
   const observationCard = () => {
     return (
       <View>
-        {taxon.map((singleItem) => (
+        {data.map((singleItem) => (
           <ResultComponent props={singleItem} />
         ))}
       </View>
     )
   }
+  // console.log('whats the taxon?', taxon.map((z) => z.iconic_taxon_name))
+  const iconicArray = taxon.map((z) => z.iconic_taxon_name)
+  const noRepeats = [...new Set(iconicArray)]
+
+  // console.log('no repeats', noRepeats)
+
 
   const taxonCategory = () => {
     return (
       <View>
-        {taxon.map((singleItem) => (
-          <CategoryFilter props={singleItem} />
+        {noRepeats.map((single) => (
+          <CategoryFilter props={single} />
         ))}
       </View>
     )

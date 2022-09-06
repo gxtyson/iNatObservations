@@ -4,13 +4,13 @@ import {StyleSheet, View, Text, Image, TouchableOpacity} from 'react-native'
 
 export default function ResultComponent({ props }) {
 
-console.log('what are props here', props)
+console.log('what are props here', props.taxon)
 
   return (
     <View>
     <TouchableOpacity>
-      <Text>{props.name}</Text>
-      <Image style={styles.logo} source={{uri: props.default_photo.medium_url}} />
+      {props.taxon !== null ? <Text>{props.taxon.name}</Text> : <Text>Name not found</Text>}
+      {props.photos.length >= 1 ? <Image style={styles.logo} source={{uri: props.photos[0].url}}/> : <Text>no Image</Text>}
     </TouchableOpacity>
     </View>
   )

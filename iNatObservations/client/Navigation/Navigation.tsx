@@ -25,6 +25,7 @@ export default function BottomTabNav() {
   return (
     <NavigationContainer>
     <Tab.Navigator >
+
       {/* need to figure out how mant bottom tabs */}
       <Tab.Screen name='Home' component={Observations} />
       <Tab.Screen name='Explore' component={DummyHome} />
