@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import {StyleSheet, TouchableOpacity, View,  ScrollView } from 'react-native';
+import {StyleSheet, TouchableOpacity, View,  ScrollView, Text } from 'react-native';
 
 import ResultComponent from './ResultComponent';
+import CategoryFilter from './CategoryFilter';
 
 const Feed: React.FC = () => {
   const [taxon, setTaxon] = useState([])
+  const [iconicTaxonName, setIconicTaxonName] = useState([])
 
 
   const fetchObservationResults = async() => {
@@ -15,6 +17,9 @@ const Feed: React.FC = () => {
   useEffect(() => {
     fetchObservationResults()
   }, [])
+
+  // console.log('what is the iconic taxon here?', iconicTaxonName)
+
 
   const observationCard = () => {
     return (
@@ -26,8 +31,22 @@ const Feed: React.FC = () => {
     )
   }
 
+  const taxonCategory = () => {
+    return (
+      <View>
+        {taxon.map((singleItem) => (
+          <CategoryFilter props={singleItem} />
+        ))}
+      </View>
+    )
+  }
+
   return (
-    <ScrollView>{observationCard()}</ScrollView>
+    <View>
+      <Text>FILTER HERE</Text>
+      <View>{taxonCategory()}</View>
+      <ScrollView>{observationCard()}</ScrollView>
+    </View>
   )
 
 
