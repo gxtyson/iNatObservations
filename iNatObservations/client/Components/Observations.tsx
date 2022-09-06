@@ -3,22 +3,56 @@ import axios from 'axios';
 import {StyleSheet, TouchableOpacity, View, Text, Image } from 'react-native';
 
 import ResultComponent from './ResultComponent';
-// import { fetchObservationTaxonName } from '../Helpers/api';
 
+const Feed: React.FC = () => {
+  const [taxon, setTaxon] = useState([])
 
-function Observation() {
-  const [taxonName, setTaxonName] = useState(null)
-  // const [iconicTaxonName, setIconicTaxonName] = useState(null)
-  const [defaultPhoto, setDefaultPhoto] = useState([])
-
-  const [results, setResults] = useState([])
 
   const fetchObservationResults = async() => {
     const { data } = await axios.get("https://api.inaturalist.org/v1/observations")
-    setResults(data.results.map((x) => x.taxon).filter(Boolean))
+    setTaxon(data.results.map((x) => x.taxon).filter(Boolean))
+  }
+  useEffect(() => {
+    fetchObservationResults()
+  }, [])
+  const observationCard = () => {
+    return (
+      <View>
+        {taxon.map((singleItem) => (
+          <ResultComponent props={singleItem} />
+        ))}
+      </View>
+    )
   }
 
-  // console.log('here are the results', results)
+  return (
+    <View>{observationCard()}</View>
+  )
+
+
+}
+
+
+ export default Feed
+
+ const styles = StyleSheet.create({
+  container: {
+    justifyContent: 'center',
+    flex: 1,
+    padding: 16,
+  },
+  buttonStyle: {
+    alignItems: 'center',
+    backgroundColor: '#DDDDDD',
+    padding: 10,
+    width: '100%',
+    marginTop: 16,
+  },
+});
+
+
+
+// console.log('here are the results', results)
 
   // const fetchObservationTaxonName = async () => {
   //   try {
@@ -49,56 +83,3 @@ function Observation() {
   //     console.error(error);
   //   }
   // };
-
-
-  useEffect(() => {
-    fetchObservationResults()
-  }, [])
-
-  console.log('here are the results', results)
-
-  function observationCard() {
-    return (
-      <View>
-        {results.map((singleItem) => (
-          <View>
-            <ResultComponent props={singleItem} />
-          </View>
-        ))}
-      </View>
-    )
-  }
-
-
-
-
-
-  return (
-
-    <View>
-      <TouchableOpacity
-      style={styles.buttonStyle}
-      >
-        <View>{observationCard()}</View>
-      </TouchableOpacity>
-    </View>
-  )
-}
-
-
- export default Observation
-
- const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'center',
-    flex: 1,
-    padding: 16,
-  },
-  buttonStyle: {
-    alignItems: 'center',
-    backgroundColor: '#DDDDDD',
-    padding: 10,
-    width: '100%',
-    marginTop: 16,
-  },
-});

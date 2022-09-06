@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text} from 'react-native'
 
 
-export default function ResultComponent( props ) {
+export default function ResultComponent({ props }) {
 
   console.log('here are result props', props)
 
@@ -10,7 +10,8 @@ export default function ResultComponent( props ) {
 
   return (
     <View>
-      <Text>Observation card</Text>
+      <Text>{props.name}</Text>
+      {/* <Text>Observation card</Text> */}
     </View>
   )
 }
