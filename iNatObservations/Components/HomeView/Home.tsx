@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View,  ScrollView, SafeAreaView } from 'react-native';
+import { StyleSheet, View,  ScrollView, SafeAreaView, Text } from 'react-native';
 
 import ObservationHomeCard from './ObservationHomeCard';
 import HelperFunc from '../../Api/api';
@@ -22,6 +22,9 @@ const Home = () => {
 
   return (
     <SafeAreaView>
+      <View style={styles.banner}>
+        <Text style={styles.appName}>iNaturalist</Text>
+      </View>
       <ScrollView>{renderObservationCard()}</ScrollView>
     </SafeAreaView>
   )
@@ -45,5 +48,15 @@ const Home = () => {
     width: '100%',
     marginTop: 16,
   },
+  appName: {
+    color: '#86a831',
+    fontSize: 24,
+    marginLeft: '3%'
+  },
+  banner: {
+    height: '5%',
+    borderBottomColor: 'grey',
+    borderBottomWidth: .25,
+  }
 });
 

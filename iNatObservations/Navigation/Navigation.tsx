@@ -7,9 +7,7 @@ import Profile from "../Components/ProfileView/ProfileView";
 import Home from '../Components/HomeView/Home'
 import Explore from "../Components/ExplorePageView/Explore";
 
-import { Entypo } from '@expo/vector-icons';
-import { Foundation } from '@expo/vector-icons';
-import { Ionicons } from '@expo/vector-icons';
+import { Entypo, Foundation, Ionicons } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator()
 // const HomeStack = createNativeStackNavigator()
