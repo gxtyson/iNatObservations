@@ -4,12 +4,11 @@ import {StyleSheet, View, Text, Image, TouchableOpacity} from 'react-native'
 
 export default function ObservationExploreCard({ props }) {
 
-
+// console.log('here are explore props', props)
 
   return (
     <View>
     <TouchableOpacity>
-
       {props.photos.length >= 1 ? <Image style={styles.logo} source={{uri: props.photos[0].url}}/> : <Text>no Image</Text>}
     </TouchableOpacity>
     </View>
