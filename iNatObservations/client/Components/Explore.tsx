@@ -13,15 +13,6 @@ const Explore = () => {
     return taxon.taxon !== null
   })
 
-  // console.log('before', allData)
-  // console.log('after', filterNullTaxonValues)
-
-
-
-  // console.log('here is all data', allData)
-  // allData = an array of objects
-
-  // console.log('here is the filtered taxon', filterOutTaxon)
 
   const renderObservationExploreGrid = () => {
     return (
@@ -33,21 +24,17 @@ const Explore = () => {
     )
   }
 
-  // const filterOutTaxon = allData.map((taxon) => taxon.taxon).filter(Boolean)
   const iconicArray = filterNullTaxonValues.map((y) => y.taxon.iconic_taxon_name)
   const iconicFilteredArray = [... new Set(iconicArray)]
 
 
-  // console.log('whats this array?', iconicArray)
-  // console.log('whats this filtered array?', iconicFilteredArray)
-
-  // console.log('before', allData)
-  // console.log('filtered?', filterOutTaxon)
-  // console.log('iconicArray here', iconicFilteredArray)
-
   const [filterName, setFilterName] = useState('')
 
   const renderFilterBox = () => {
+    const reset = () => {
+      setFilterName('')
+    }
+
     return (
       <View>
         <TouchableOpacity>
@@ -56,16 +43,21 @@ const Explore = () => {
           ))}
 
         </TouchableOpacity>
+        <TouchableOpacity onPress={reset}>
+          <Text>Clear Filters</Text>
+        </TouchableOpacity>
       </View>
     )
   }
-  console.log('filtername here', filterName)
 
   const filterFunc = filterNullTaxonValues.filter(function(icon) {
-    return icon.taxon.iconic_taxon_name === filterName
+    if (filterName === '') {
+      return filterNullTaxonValues
+    } else {
+      return icon.taxon.iconic_taxon_name === filterName
+    }
   })
 
-  console.log('hopefully this works',filterFunc)
 
   return (
     <View>

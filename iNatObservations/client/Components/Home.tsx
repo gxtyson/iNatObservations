@@ -17,22 +17,6 @@ const Home = () => {
       </View>
     )
   }
-  // console.log('whats the taxon?', taxon.map((z) => z.iconic_taxon_name))
-  // const iconicArray = taxon.map((z) => z.iconic_taxon_name)
-  // const noRepeats = [...new Set(iconicArray)]
-
-  // console.log('no repeats', noRepeats)
-
-
-  // const taxonCategory = () => {
-  //   return (
-  //     <View>
-  //       {noRepeats.map((single) => (
-  //         <CategoryFilter props={single} />
-  //       ))}
-  //     </View>
-  //   )
-  // }
 
   return (
     <View>
@@ -61,36 +45,3 @@ const Home = () => {
   },
 });
 
-
-
-// console.log('here are the results', results)
-
-  // const fetchObservationTaxonName = async () => {
-  //   try {
-  //     const { data } = await axios.get(
-  //       "https://api.inaturalist.org/v1/observations"
-  //     );
-  //     const resultArray = data.results;
-  //     const taxon = resultArray.map((x) => x.taxon).filter(Boolean);
-  //     const taxonName = taxon.map((y) => y.name).filter(Boolean);
-
-  //     const defaultPhotos = taxon.map((p) => p.default_photo).filter(Boolean);
-  //     const squareUrl = defaultPhotos.map((s) => s.square_url).filter(Boolean)
-  //     console.log('photos', defaultPhotos)
-  //     console.log('photo url', squareUrl)
-  //     setDefaultPhoto(squareUrl)
-
-  //     console.log('photurl', defaultPhoto)
-
-
-  //     // should add a filter method for the iconicTaxonName
-  //     // const iconicTaxonName = taxon.map((z) => z.iconic_taxon_name)
-
-
-  //     setTaxonName(taxonName);
-
-  //     // setIconicTaxonName(iconicTaxonName)
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
