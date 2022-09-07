@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, ScrollView, Text, TouchableOpacity } from 'react-native'
+import { StyleSheet, View, ScrollView, Text, TouchableOpacity, SafeAreaView } from 'react-native'
 import { useState } from 'react'
 
 import ObservationExploreCard from "./ObservationExploreCard";
@@ -63,10 +63,10 @@ const Explore = () => {
   }
 
   return (
-    <View>
+    <SafeAreaView>
       <View>{renderFilterBox()}</View>
       <ScrollView>{renderObservationExploreGrid()}</ScrollView>
-    </View>
+    </SafeAreaView>
   )
 
 }

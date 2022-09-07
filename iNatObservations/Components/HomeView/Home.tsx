@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View,  ScrollView } from 'react-native';
+import { StyleSheet, View,  ScrollView, SafeAreaView } from 'react-native';
 
 import ObservationHomeCard from './ObservationHomeCard';
 import HelperFunc from '../../Api/api';
@@ -21,9 +21,9 @@ const Home = () => {
   }
 
   return (
-    <View>
+    <SafeAreaView>
       <ScrollView>{renderObservationCard()}</ScrollView>
-    </View>
+    </SafeAreaView>
   )
 
 
