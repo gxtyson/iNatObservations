@@ -3,32 +3,44 @@ import { StyleSheet, View, ScrollView, Text, TouchableOpacity } from 'react-nati
 import { useState } from 'react'
 
 import ObservationExploreCard from "./ObservationExploreCard";
-import FilterBox from "./FilterBox";
-import HelperFunc from "../Helpers/api";
+import FilterBox from "./Filter/FilterBox";
+import HelperFunc from "../../Api/api";
 
 const Explore = () => {
   const allData = HelperFunc()
+  const [filterName, setFilterName] = useState('')
 
   const filterNullTaxonValues = allData.filter(function(taxon) {
     return taxon.taxon !== null
   })
+  const iconicArray = filterNullTaxonValues.map((y) => y.taxon.iconic_taxon_name)
+  const iconicFilteredArray = [... new Set(iconicArray)]
+
+  const filterFunc = filterNullTaxonValues.filter(function(icon) {
+    if (filterName === '') {
+      return filterNullTaxonValues
+    } else {
+      return icon.taxon.iconic_taxon_name === filterName
+    }
+  })
+
+  console.log('iconicFiltered', iconicFilteredArray)
 
 
   const renderObservationExploreGrid = () => {
     return (
       <View>
         {filterFunc.map((singleItem) => (
-          <ObservationExploreCard props={singleItem} />
+          <View key={singleItem.id}>
+            <ObservationExploreCard props={singleItem} />
+          </View>
         ))}
       </View>
     )
   }
 
-  const iconicArray = filterNullTaxonValues.map((y) => y.taxon.iconic_taxon_name)
-  const iconicFilteredArray = [... new Set(iconicArray)]
 
 
-  const [filterName, setFilterName] = useState('')
 
   const renderFilterBox = () => {
     const reset = () => {
@@ -49,15 +61,6 @@ const Explore = () => {
       </View>
     )
   }
-
-  const filterFunc = filterNullTaxonValues.filter(function(icon) {
-    if (filterName === '') {
-      return filterNullTaxonValues
-    } else {
-      return icon.taxon.iconic_taxon_name === filterName
-    }
-  })
-
 
   return (
     <View>

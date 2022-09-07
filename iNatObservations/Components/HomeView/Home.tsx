@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View,  ScrollView } from 'react-native';
 
 import ObservationHomeCard from './ObservationHomeCard';
-import HelperFunc from '../Helpers/api';
+import HelperFunc from '../../Api/api';
 
 
 const Home = () => {
@@ -12,7 +12,9 @@ const Home = () => {
     return (
       <View>
         {allData.map((singleItem) => (
-          <ObservationHomeCard props={singleItem} />
+          <View key={singleItem.id}>
+            <ObservationHomeCard props={singleItem} />
+          </View>
         ))}
       </View>
     )

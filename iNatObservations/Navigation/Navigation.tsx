@@ -3,9 +3,9 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import DummyHome from "../Components/DummyComponent";
-import Home from '../Components/Home'
-import Explore from "../Components/Explore";
+import DummyHome from "../Components/ProfileView/DummyComponent";
+import Home from '../Components/HomeView/Home'
+import Explore from "../Components/ExplorePageView/Explore";
 
 const Tab = createBottomTabNavigator()
 // const HomeStack = createNativeStackNavigator()
