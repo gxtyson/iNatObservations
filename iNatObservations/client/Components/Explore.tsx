@@ -8,8 +8,10 @@ import HelperFunc from "../Helpers/api";
 const Explore = () => {
   const allData = HelperFunc()
 
-  console.log('here is all data', allData)
+  // console.log('here is all data', allData)
   // allData = an array of objects
+
+  // console.log('here is the filtered taxon', filterOutTaxon)
 
   const renderObservationExploreGrid = () => {
     return (
@@ -20,10 +22,17 @@ const Explore = () => {
       </View>
     )
   }
+
+  const filterOutTaxon = allData.map((taxon) => taxon.taxon).filter(Boolean)
+  const iconicArray = filterOutTaxon.map((y) => y.iconic_taxon_name)
+  const iconicFilteredArray = [... new Set(iconicArray)]
+
+  // console.log('iconicArray here', iconicFilteredArray)
+
   const renderFilterBox = () => {
     return (
       <View>
-        {allData.map((iconicName) => (
+        {iconicFilteredArray.map((iconicName) => (
           <FilterBox props={iconicName} />
         ))}
       </View>

@@ -4,7 +4,6 @@ import {StyleSheet, View, Text, Image, TouchableOpacity} from 'react-native'
 
 export default function ObservationExploreCard({ props }) {
 
-// console.log('here are explore props', props)
 
   return (
     <View>
