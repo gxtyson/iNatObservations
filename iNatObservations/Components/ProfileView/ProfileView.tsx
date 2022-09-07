@@ -6,6 +6,12 @@ import { Ionicons } from '@expo/vector-icons'
 const ProfileView = () => {
   return (
     <SafeAreaView>
+      <View style={styles.banner}>
+      <Text style={styles.appName}>
+          <Text style={styles.i}>í</Text>
+          Naturalist
+        </Text>
+      </View>
       <View style={styles.false}>
         <Text>
           <Ionicons name="person-circle" size={88} color="white" />
@@ -34,5 +40,19 @@ const styles = StyleSheet.create({
     display:'flex',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  appName: {
+    color: 'black',
+    fontSize: 24,
+    marginLeft: '3%',
+    fontWeight: 'bold'
+  },
+  banner: {
+    height: '5%',
+    borderBottomColor: 'grey',
+    borderBottomWidth: .25,
+  },
+  i: {
+    color: '#86a831',
   }
 })

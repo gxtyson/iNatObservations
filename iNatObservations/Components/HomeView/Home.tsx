@@ -23,7 +23,10 @@ const Home = () => {
   return (
     <SafeAreaView>
       <View style={styles.banner}>
-        <Text style={styles.appName}>iNaturalist</Text>
+        <Text style={styles.appName}>
+          <Text style={styles.i}>í</Text>
+          Naturalist
+        </Text>
       </View>
       <ScrollView>{renderObservationCard()}</ScrollView>
     </SafeAreaView>
@@ -49,14 +52,19 @@ const Home = () => {
     marginTop: 16,
   },
   appName: {
-    color: '#86a831',
+    color: 'black',
     fontSize: 24,
-    marginLeft: '3%'
+    marginLeft: '3%',
+    fontWeight: 'bold'
   },
   banner: {
     height: '5%',
     borderBottomColor: 'grey',
     borderBottomWidth: .25,
+  },
+  i: {
+    color: '#86a831',
   }
+
 });
 

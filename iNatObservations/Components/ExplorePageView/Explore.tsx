@@ -53,7 +53,6 @@ const Explore = () => {
           {iconicFilteredArray.map((iconicName) => (
             <FilterBox props={iconicName} setFilterName={setFilterName}/>
           ))}
-
         </TouchableOpacity>
         <TouchableOpacity onPress={reset}>
           <Text>Clear Filters</Text>
@@ -64,6 +63,12 @@ const Explore = () => {
 
   return (
     <SafeAreaView>
+      <View style={styles.banner}>
+      <Text style={styles.appName}>
+          <Text style={styles.i}>í</Text>
+          Naturalist
+        </Text>
+      </View>
       <View>{renderFilterBox()}</View>
       <ScrollView>{renderObservationExploreGrid()}</ScrollView>
     </SafeAreaView>
@@ -72,3 +77,20 @@ const Explore = () => {
 }
 
 export default Explore
+
+const styles = StyleSheet.create({
+  appName: {
+    color: 'black',
+    fontSize: 24,
+    marginLeft: '3%',
+    fontWeight: 'bold'
+  },
+  banner: {
+    height: '5%',
+    borderBottomColor: 'grey',
+    borderBottomWidth: .25,
+  },
+  i: {
+    color: '#86a831',
+  }
+})
