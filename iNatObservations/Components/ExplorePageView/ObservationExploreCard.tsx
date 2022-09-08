@@ -7,7 +7,7 @@ const ObservationExploreCard = ({ singleItem }) => {
   return (
     <View style={styles.image}>
       <TouchableOpacity>
-        {singleItem.photos.length >= 1 ? <Image style={styles.logo} source={{uri: singleItem.photos[0].url}}/> : <View style={styles.noImage}><Entypo name="image" size={24} color="black" /></View>}
+        {singleItem.photos.length >= 1 ? <Image style={styles.logo} source={{uri: singleItem.photos[0].url}}/> : <View style={styles.noImage}><Entypo name="image" size={36} color="black" /></View>}
       </TouchableOpacity>
     </View>
   )
@@ -25,6 +25,8 @@ const styles = StyleSheet.create({
   },
   noImage: {
     width: 140,
-    height: 140
+    height: 140,
+    justifyContent: 'center',
+    alignItems: 'center',
   }
 });

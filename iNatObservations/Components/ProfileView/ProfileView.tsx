@@ -12,12 +12,7 @@ const ProfileView = () => {
             Naturalist
         </Text>
       </View>
-      <View style={styles.false}>
-        <Text>
-          <Ionicons name="person-circle" size={88} color="white" />
-            No Observations
-        </Text>
-      </View>
+
       <View style={styles.main}>
         <Ionicons name="person-circle" size={200} color="gray" />
         <Text>
@@ -34,21 +29,19 @@ export default ProfileView
 const styles = StyleSheet.create({
   false: {
     backgroundColor: 'gray',
-    padding: 15
   },
   main: {
-    display:'flex',
     justifyContent: 'center',
     alignItems: 'center',
   },
   appName: {
     color: 'black',
-    fontSize: 24,
+    fontSize: 26,
     marginLeft: '3%',
     fontWeight: 'bold'
   },
   banner: {
-    height: '5%',
+    height: '15%',
     borderBottomColor: 'grey',
     borderBottomWidth: .25,
   },

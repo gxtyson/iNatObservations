@@ -54,7 +54,7 @@ const Home = () => {
   },
   appName: {
     color: 'black',
-    fontSize: 24,
+    fontSize: 26,
     marginLeft: '3%',
     fontWeight: 'bold'
   },

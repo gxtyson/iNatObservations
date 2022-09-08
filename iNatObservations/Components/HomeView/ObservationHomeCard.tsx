@@ -1,7 +1,8 @@
 import React from "react";
 import {StyleSheet, View, Text, Image, TouchableOpacity} from 'react-native'
 
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, Entypo } from '@expo/vector-icons';
+
 
 
 const ObservationHomeCard = ({ singleItem }) => {
@@ -16,7 +17,7 @@ const ObservationHomeCard = ({ singleItem }) => {
           </Text>
         </View>
 
-        {singleItem.photos.length >= 1 ? <Image style={styles.image} source={{uri: singleItem.photos[0].url}}/> : <Text>no Image</Text>}
+        {singleItem.photos.length >= 1 ? <Image style={styles.image} source={{uri: singleItem.photos[0].url}}/> : <View style={styles.noImage}><Entypo name="image" size={50} color="black" /></View>}
 
         <Text style={styles.commonName}>
           {singleItem.taxon.preferred_common_name}
@@ -56,6 +57,13 @@ const styles = StyleSheet.create({
     marginHorizontal: 2,
     paddingBottom: 6,
   },
+  noImage: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'grey',
+    width: '100%',
+    height: 420
+  }
 
 
 

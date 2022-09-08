@@ -36,7 +36,7 @@ const Explore = () => {
           ))}
         </View>
         <TouchableOpacity onPress={reset}>
-          <Text>Clear Filters</Text>
+          <Text style={styles.clearFilter}>Clear Filters</Text>
         </TouchableOpacity>
       </View>
     )
@@ -77,7 +77,7 @@ export default Explore
 const styles = StyleSheet.create({
   appName: {
     color: 'black',
-    fontSize: 24,
+    fontSize: 26,
     marginLeft: '3%',
     fontWeight: 'bold'
   },
@@ -98,5 +98,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-evenly'
+  },
+  clearFilter: {
+    color: '#86a831',
+    fontSize: 16,
+    padding: 4,
+    fontWeight: 'bold',
   }
 })
