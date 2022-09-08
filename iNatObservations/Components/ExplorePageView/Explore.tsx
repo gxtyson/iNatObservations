@@ -14,11 +14,11 @@ const Explore = () => {
     return taxon.taxon !== null
   })
 
-  const filterFunc = filterNullTaxonValues.filter(function(icon) {
+  const filterFunc = filterNullTaxonValues.filter(function(iconicName) {
     if (filterName === '') {
       return filterNullTaxonValues
     } else {
-      return icon.taxon.iconic_taxon_name === filterName
+      return iconicName.taxon.iconic_taxon_name === filterName
     }
   })
 
@@ -32,7 +32,7 @@ const Explore = () => {
       <View>
         <View style={styles.filterGrid}>
           {fixedAnimalArray.map((iconicName) => (
-              <FilterBox props={iconicName} setFilterName={setFilterName}/>
+              <FilterBox iconicName={iconicName} setFilterName={setFilterName}/>
           ))}
         </View>
         <TouchableOpacity onPress={reset}>

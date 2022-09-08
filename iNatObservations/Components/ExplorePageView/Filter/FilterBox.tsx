@@ -3,14 +3,14 @@ import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
 
 import { MaterialCommunityIcons, FontAwesome5, FontAwesome } from '@expo/vector-icons';
 
-export default function FilterBox({ props , setFilterName}) {
+export default function FilterBox({ iconicName , setFilterName}) {
 
 
   const eventHandler = () => {
-    setFilterName(props)
+    setFilterName(iconicName)
   }
-  const itemSwitch = (props) => {
-    switch (props) {
+  const itemSwitch = (iconicName) => {
+    switch (iconicName) {
       case 'Fungi':
         return <MaterialCommunityIcons name="mushroom" size={24} color="black" />
       case 'Plantae':
@@ -39,7 +39,7 @@ export default function FilterBox({ props , setFilterName}) {
     <View>
       <TouchableOpacity onPress={eventHandler}>
         <Text style={styles.icon}>
-        {itemSwitch(props)}
+        {itemSwitch(iconicName)}
         </Text>
       </TouchableOpacity>
 
