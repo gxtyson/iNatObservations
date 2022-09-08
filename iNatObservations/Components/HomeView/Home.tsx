@@ -4,9 +4,11 @@ import { StyleSheet, View,  ScrollView, SafeAreaView, Text } from 'react-native'
 import ObservationHomeCard from './ObservationHomeCard';
 import HelperFunc from '../../Api/api';
 
+import { ISingleResults } from '../../Interfaces/singleResult';
 
 const Home = () => {
   const allData = HelperFunc()
+  console.log('what is this data?', allData)
 
   const filterNullTaxonValues = allData.filter(function(taxon) {
     return taxon.taxon !== null
@@ -17,7 +19,7 @@ const Home = () => {
       <View>
         {filterNullTaxonValues.map((singleItem) => (
           <View key={singleItem.id}>
-            <ObservationHomeCard props={singleItem} />
+            <ObservationHomeCard singleItem={singleItem} />
           </View>
         ))}
       </View>

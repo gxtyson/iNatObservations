@@ -3,36 +3,35 @@ import {StyleSheet, View, Text, Image, TouchableOpacity} from 'react-native'
 
 import { Ionicons } from '@expo/vector-icons';
 
-export default function ObservationHomeCard({ props }) {
-  console.log('props', props)
-  // console.log('photos', props.photos)
 
+const ObservationHomeCard = ({ singleItem }) => {
 
-
-
+  console.log('what is this', singleItem)
   return (
     <View style={styles.card}>
       <TouchableOpacity>
         <View>
           <Text style={styles.username}>
             <Ionicons name="person-circle-sharp" size={30} color="black" />
-            {props.user.login}
+            {singleItem.user.login}
           </Text>
         </View>
 
-        {props.photos.length >= 1 ? <Image style={styles.image} source={{uri: props.photos[0].url}}/> : <Text>no Image</Text>}
+        {singleItem.photos.length >= 1 ? <Image style={styles.image} source={{uri: singleItem.photos[0].url}}/> : <Text>no Image</Text>}
 
         <Text style={styles.commonName}>
-          {props.taxon.preferred_common_name}
+          {singleItem.taxon.preferred_common_name}
         </Text>
 
         <Text style={styles.taxonName}>
-          {`(${props.taxon.name})`}
+          {`(${singleItem.taxon.name})`}
         </Text>
       </TouchableOpacity>
     </View>
   )
 }
+
+export default ObservationHomeCard
 
 
 const styles = StyleSheet.create({

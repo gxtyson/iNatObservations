@@ -7,9 +7,9 @@ const ProfileView = () => {
   return (
     <SafeAreaView>
       <View style={styles.banner}>
-      <Text style={styles.appName}>
+        <Text style={styles.appName}>
           <Text style={styles.i}>í</Text>
-          Naturalist
+            Naturalist
         </Text>
       </View>
       <View style={styles.false}>
@@ -19,10 +19,10 @@ const ProfileView = () => {
         </Text>
       </View>
       <View style={styles.main}>
-      <Ionicons name="person-circle" size={200} color="gray" />
+        <Ionicons name="person-circle" size={200} color="gray" />
         <Text>
           Looks like you have no observations.
-          </Text>
+        </Text>
       </View>
     </SafeAreaView>
   )
