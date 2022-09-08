@@ -32,7 +32,7 @@ const Explore = () => {
       <View>
         {filterFunc.map((singleItem) => (
           <View key={singleItem.id}>
-            <ObservationExploreCard props={singleItem} />
+            <ObservationExploreCard singleItem={singleItem} />
           </View>
         ))}
       </View>
@@ -65,18 +65,17 @@ const Explore = () => {
   return (
     <SafeAreaView>
       <View style={styles.banner}>
-      <Text style={styles.appName}>
+        <Text style={styles.appName}>
           <Text style={styles.i}>í</Text>
-          Naturalist
+            Naturalist
         </Text>
       </View>
-      <View>{renderFilterBox()}</View>
-      <ScrollView contentContainerStyle={styles.grid}>{renderObservationExploreGrid()}</ScrollView>
-      {/* <FlatList
-      data={filterNullTaxonValues}
-      renderItem={renderObservationExploreGrid}
-      // numColumns={3}
-      /> */}
+      <View>
+        {renderFilterBox()}
+      </View>
+      <ScrollView contentContainerStyle={styles.grid}>
+        {renderObservationExploreGrid()}
+      </ScrollView>
     </SafeAreaView>
   )
 

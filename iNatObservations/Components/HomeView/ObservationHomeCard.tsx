@@ -6,7 +6,6 @@ import { Ionicons } from '@expo/vector-icons';
 
 const ObservationHomeCard = ({ singleItem }) => {
 
-  console.log('what is this', singleItem)
   return (
     <View style={styles.card}>
       <TouchableOpacity>

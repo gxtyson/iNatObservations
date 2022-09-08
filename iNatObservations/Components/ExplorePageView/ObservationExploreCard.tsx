@@ -2,18 +2,18 @@ import React from "react";
 import {StyleSheet, View, Text, Image, TouchableOpacity, FlatList} from 'react-native'
 
 
-export default function ObservationExploreCard({ props }) {
-
-
+const ObservationExploreCard = ({ singleItem }) => {
   return (
     <View>
       <TouchableOpacity>
-        {props.photos.length >= 1 ? <Image style={styles.logo} source={{uri: props.photos[0].url}}/> : <Text>no Image</Text>}
+        {singleItem.photos.length >= 1 ? <Image style={styles.logo} source={{uri: singleItem.photos[0].url}}/> : <Text>no Image</Text>}
       </TouchableOpacity>
     </View>
+
   )
 }
 
+export default ObservationExploreCard
 
 const styles = StyleSheet.create({
   logo: {
