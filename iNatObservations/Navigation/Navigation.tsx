@@ -1,6 +1,5 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import Profile from "../Components/ProfileView/ProfileView";
@@ -10,16 +9,6 @@ import Explore from "../Components/ExplorePageView/Explore";
 import { Entypo, Foundation, Ionicons } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator()
-// const HomeStack = createNativeStackNavigator()
-
-// const Home = () => {
-//   return (
-//     <HomeStack.Navigator screenOptions={{headerShown: false}}>
-//       <HomeStack.Screen name='DummyHome' component={DummyHome}/>
-
-//     </HomeStack.Navigator>
-//   )
-// }
 
 
 export default function BottomTabNav() {
@@ -49,12 +38,3 @@ export default function BottomTabNav() {
   )
 }
 
-
-// this function will be for authenication if needed for api
-// export default function NavigationCon() {
-//   return (
-//     <NavigationContainer>
-
-//     </NavigationContainer>
-//   )
-// }
