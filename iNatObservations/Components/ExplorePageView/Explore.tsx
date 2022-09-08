@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, ScrollView, Text, TouchableOpacity, SafeAreaView, FlatList } from 'react-native'
+import { StyleSheet, View, ScrollView, Text, TouchableOpacity, SafeAreaView } from 'react-native'
 import { useState } from 'react'
 
 import ObservationExploreCard from "./ObservationExploreCard";
@@ -13,8 +13,6 @@ const Explore = () => {
   const filterNullTaxonValues = allData.filter(function(taxon) {
     return taxon.taxon !== null
   })
-  const iconicArray = filterNullTaxonValues.map((y) => y.taxon.iconic_taxon_name)
-  const iconicFilteredArray = [... new Set(iconicArray)]
 
   const filterFunc = filterNullTaxonValues.filter(function(icon) {
     if (filterName === '') {
@@ -24,43 +22,36 @@ const Explore = () => {
     }
   })
 
-  console.log('iconicFiltered', iconicFilteredArray)
-
-
-  const renderObservationExploreGrid = () => {
-    return (
-      <View>
-        {filterFunc.map((singleItem) => (
-          <View key={singleItem.id}>
-            <ObservationExploreCard singleItem={singleItem} />
-          </View>
-        ))}
-      </View>
-    )
-  }
-
-
-
-
   const renderFilterBox = () => {
     const reset = () => {
       setFilterName('')
     }
-    const fixedAnimalArray = ['Fungi', 'Plantae', 'Aves', 'Insecta', 'Mollusca', 'Arachnida', 'Animalia', 'Reptilia', 'Amphibia', 'Mammalia']
+    const fixedAnimalArray = ['Fungi', 'Plantae', 'Aves', 'Insecta', 'Mollusca', 'Arachnida', 'Reptilia', 'Amphibia', 'Mammalia']
 
     return (
       <View>
-        <TouchableOpacity>
+        <View style={styles.filterGrid}>
           {fixedAnimalArray.map((iconicName) => (
-            <FilterBox props={iconicName} setFilterName={setFilterName}/>
+              <FilterBox props={iconicName} setFilterName={setFilterName}/>
           ))}
-        </TouchableOpacity>
+        </View>
         <TouchableOpacity onPress={reset}>
           <Text>Clear Filters</Text>
         </TouchableOpacity>
       </View>
     )
   }
+
+  const renderObservationExploreGrid = () => {
+    return (
+      <View style={styles.grid}>
+        {filterFunc.map((singleItem) => (
+            <ObservationExploreCard singleItem={singleItem} />
+        ))}
+      </View>
+    )
+  }
+
 
   return (
     <SafeAreaView>
@@ -73,7 +64,7 @@ const Explore = () => {
       <View>
         {renderFilterBox()}
       </View>
-      <ScrollView contentContainerStyle={styles.grid}>
+      <ScrollView>
         {renderObservationExploreGrid()}
       </ScrollView>
     </SafeAreaView>
@@ -99,8 +90,13 @@ const styles = StyleSheet.create({
     color: '#86a831',
   },
   grid: {
-    backgroundColor: 'pink',
-    display: 'flex',
-
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'flex-start',
+  },
+  filterGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-evenly'
   }
 })

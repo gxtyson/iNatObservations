@@ -5,7 +5,6 @@ import { MaterialCommunityIcons, FontAwesome5, FontAwesome } from '@expo/vector-
 
 export default function FilterBox({ props , setFilterName}) {
 
-  // console.log('what are these props', props)
 
   const eventHandler = () => {
     setFilterName(props)
@@ -39,7 +38,7 @@ export default function FilterBox({ props , setFilterName}) {
   return (
     <View>
       <TouchableOpacity onPress={eventHandler}>
-        <Text style={styles.grid}>
+        <Text style={styles.icon}>
         {itemSwitch(props)}
         </Text>
       </TouchableOpacity>
@@ -49,8 +48,12 @@ export default function FilterBox({ props , setFilterName}) {
 }
 
 const styles = StyleSheet.create({
-  grid: {
-    backgroundColor: 'green'
+  icon: {
+    margin: 3,
+    padding: 5,
+    borderColor: 'gray',
+    borderWidth: 3,
+    borderRadius: 5,
 
-  }
+  },
 })
