@@ -1,5 +1,5 @@
 import React from "react";
-import {StyleSheet, View, Text, Image, TouchableOpacity} from 'react-native'
+import {StyleSheet, View, Text, Image, TouchableOpacity, FlatList} from 'react-native'
 
 
 export default function ObservationExploreCard({ props }) {
@@ -7,9 +7,9 @@ export default function ObservationExploreCard({ props }) {
 
   return (
     <View>
-    <TouchableOpacity>
-      {props.photos.length >= 1 ? <Image style={styles.logo} source={{uri: props.photos[0].url}}/> : <Text>no Image</Text>}
-    </TouchableOpacity>
+      <TouchableOpacity>
+        {props.photos.length >= 1 ? <Image style={styles.logo} source={{uri: props.photos[0].url}}/> : <Text>no Image</Text>}
+      </TouchableOpacity>
     </View>
   )
 }

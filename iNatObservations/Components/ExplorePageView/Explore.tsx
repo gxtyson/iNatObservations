@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, ScrollView, Text, TouchableOpacity, SafeAreaView } from 'react-native'
+import { StyleSheet, View, ScrollView, Text, TouchableOpacity, SafeAreaView, FlatList } from 'react-native'
 import { useState } from 'react'
 
 import ObservationExploreCard from "./ObservationExploreCard";
@@ -46,11 +46,12 @@ const Explore = () => {
     const reset = () => {
       setFilterName('')
     }
+    const fixedAnimalArray = ['Fungi', 'Plantae', 'Aves', 'Insecta', 'Mollusca', 'Arachnida', 'Animalia', 'Reptilia', 'Amphibia', 'Mammalia']
 
     return (
       <View>
         <TouchableOpacity>
-          {iconicFilteredArray.map((iconicName) => (
+          {fixedAnimalArray.map((iconicName) => (
             <FilterBox props={iconicName} setFilterName={setFilterName}/>
           ))}
         </TouchableOpacity>
@@ -70,7 +71,12 @@ const Explore = () => {
         </Text>
       </View>
       <View>{renderFilterBox()}</View>
-      <ScrollView>{renderObservationExploreGrid()}</ScrollView>
+      <ScrollView contentContainerStyle={styles.grid}>{renderObservationExploreGrid()}</ScrollView>
+      {/* <FlatList
+      data={filterNullTaxonValues}
+      renderItem={renderObservationExploreGrid}
+      // numColumns={3}
+      /> */}
     </SafeAreaView>
   )
 
@@ -92,5 +98,10 @@ const styles = StyleSheet.create({
   },
   i: {
     color: '#86a831',
+  },
+  grid: {
+    backgroundColor: 'pink',
+    display: 'flex',
+
   }
 })

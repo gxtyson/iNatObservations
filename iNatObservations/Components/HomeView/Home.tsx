@@ -8,10 +8,14 @@ import HelperFunc from '../../Api/api';
 const Home = () => {
   const allData = HelperFunc()
 
+  const filterNullTaxonValues = allData.filter(function(taxon) {
+    return taxon.taxon !== null
+  })
+
   const renderObservationCard = () => {
     return (
       <View>
-        {allData.map((singleItem) => (
+        {filterNullTaxonValues.map((singleItem) => (
           <View key={singleItem.id}>
             <ObservationHomeCard props={singleItem} />
           </View>

@@ -5,7 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 export default function ObservationHomeCard({ props }) {
   console.log('props', props)
-  console.log('photos', props.photos)
+  // console.log('photos', props.photos)
 
 
 
